@@ -1,0 +1,587 @@
+// Define Proxima Nova font faces
+@font-face {
+  font-family: "ProximaNova";
+  src: url("./assets/fonts/ProximaNova/ProximaNova-Regular.woff2") format("woff2"),
+       url("./assets/fonts/ProximaNova/ProximaNova-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("./assets/fonts/ProximaNova/ProximaNova-Bold.woff2") format("woff2"),
+       url("./assets/fonts/ProximaNova/ProximaNova-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "ProximaNova", sans-serif;
+}
+
+.Footer{
+  font-size: small;
+}
+
+.navbar-container {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .first-row {
+    padding: 0.75rem 1rem;
+
+    .search-location,
+    .user-cart {
+      font-size: 1rem;
+
+      .user,
+      .location,
+      .search,
+      .cart {
+        color: #333;
+        margin: 0 0.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+
+    .logo img {
+      max-height: 32px;
+      max-width: 130px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .second-row {
+    display: flex;
+    justify-content: center;
+    &:hover {
+      color: #14afe3;
+    }
+    .nav-link {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #333;
+      position: relative;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+
+      // Underline effect on hover
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #14afe3;
+        left: 0;
+        bottom: 0;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      .dropdown:hover > &::after {
+        width: 100%; // Underline remains visible
+      }
+    }
+
+    // Dropdown Menu
+    .dropdown {
+      position: relative;
+
+      .dropdown-menu {
+        border: none;
+        display: none;
+        position: absolute;
+        left: 0;
+        min-width: 10rem;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+        
+        .dropdown-item {
+          padding: 1rem 6.5rem 1rem 1rem;
+          color: #333;
+          font-size: 0.85rem;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #f1f1f1;
+            color: #007bff;
+          }
+        }
+      }
+
+      &:hover .dropdown-menu {
+        display: block;
+      }
+
+      &:hover > .nav-link::after {
+        width: 100%; // Underline stays visible when hovering over dropdown
+      }
+    }
+  }
+}
+
+.modal-body {
+  p {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .form-control {
+    border: 1px solid #ccc;
+    &:focus {
+      border-color: #007bff; // Bootstrap primary color
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  .btn-link {
+    color: #007bff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.offcanvas-body .btn-primary {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  background-color: #0d6efd;
+  overflow: hidden;
+
+  // Background effect with pseudo-element
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #14afe3;
+    transition: width 0.5s ease;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.hero .btn-primary, .custom-button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  background-color: #0d6efd;
+  overflow: hidden;
+  transition: color 0.5s ease;
+
+  // Background effect with pseudo-element
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #14afe3;
+    transition: width 0.5s ease;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    width: 100%; // Expands the background on hover
+  }
+
+  // Ensures text content is above the background effect
+  span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.search-bar {
+  transition: all 0.3s ease;
+  background-color: #f0f0f0; // Light gray background
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+
+  .search-input {
+    width: 100%;
+    padding: 25px 50px 25px 20px; // Space for the icon
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    color: black;
+  }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+}
+
+.list-container {
+
+  li {
+    padding: 0.35rem;
+
+    &:hover {
+      color: rgb(0, 140, 255);
+      cursor: pointer;
+    }
+  }
+
+  a{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover{
+      color: rgb(0, 140, 255);
+      cursor: pointer;
+    }
+  }
+}
+
+
+.social-icons {
+  a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #4f5358;
+    }
+  }
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+
+.slick-slide > div {
+  margin: 0 5px;
+}
+
+.transition-card {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+
+
+.transition-image {
+  transition: transform 0.3s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+}
+
+
+.breadcrumb{
+  font-size: small;
+}
+
+.ring-button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff; // Default text color
+  transition: color 0.5s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: white;
+    transition: width 0.5s ease;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+
+  &:hover {
+    color: black; 
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    color: inherit;
+
+ 
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+
+.centered-cards-container {
+  padding: 2rem;
+  .card {
+    .card-img-top {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer; 
+}
+
+.visit-icebox-container {
+  padding: 5rem;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 3rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+  }
+
+  .h-text {
+    width: 40%;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      width: 80%;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
+      width: 100%;
+    }
+  }
+
+  .card-body {
+    .card-title,
+    .card-subtitle {
+      font-size: 1rem;
+    }
+
+    .card-text {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.hero-image {
+  width: 100vw;
+  height: 350px;
+  object-fit: cover;
+}
+
+
+.HeroSection {
+  .dropdown-menu{
+    border-radius: 0;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown-item{
+    padding: 0.75rem;
+  }
+  
+
+
+  .dropdown .btn-light {
+    background-color: #eeebeb;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #000;
+      border-radius: 1.5rem;
+    }
+  }
+
+  .dropdown {
+    margin-right: 0.5rem;
+
+    &:last-child {
+      margin-right: 0; 
+    }
+  }
+}
+
+.watches-custom-box {
+  background-color: #d0e7ff;
+  color: #2a8cee; 
+  border: solid;
+  border-style: dashed;
+}
+
+$spinner-size: 0.75rem;
+
+.small-spinner {
+  width: $spinner-size;
+  height: $spinner-size;
+}
+
+.instock{
+  color: green;
+  font-size: small;
+  background-color: rgb(197, 247, 197);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.text-small{
+  font-size: small;
+}
+
+.accordion {
+  border: none;
+  
+  .accordion-item {
+    border: none;
+    
+
+    .accordion-button {
+      color: black;
+      background-color: rgb(240, 240, 240);
+      
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .accordion-body {
+
+       .fw-bold {
+        background-color:rgb(240, 240, 240);
+        width: 3rem;
+        height: 3rem;
+        border: none;
+
+     &.active {
+      background-color: white;
+      border: 1px solid rgb(125, 176, 235);
+    }
+
+    &:hover {
+      background-color: white;
+      border: 1px solid rgb(125, 176, 235);
+    }
+    }
+    }
+  }
+}
+
+.btn-light{
+  background-color:rgb(240, 240, 240);
+}
+
+.btn-cart{
+  padding: 10px;
+
+  &:hover{
+    background-color: #2a8cee;
+    border-color: #2a8cee;
+  }
+}
+
+.btn-wa{
+  padding: 10px;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0b5ed7;
+}
+
+.call-now {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.call-now a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.call-now a:hover {
+  text-decoration: underline;
+}
+
+
+
+
